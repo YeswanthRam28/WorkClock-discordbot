@@ -31,7 +31,8 @@ class WorkClockBot(commands.Bot):
             self.db_pool = await asyncpg.create_pool(
                 dsn=config.SUPABASE_DB_URL,
                 min_size=1,
-                max_size=10
+                max_size=10,
+                ssl='require'
             )
             print("Database pool established successfully.")
         except Exception as e:
